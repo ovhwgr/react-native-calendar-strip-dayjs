@@ -3672,10 +3672,6 @@ minimist@~0.0.1:
   dependencies:
     minimist "0.0.8"
 
-moment@^2.17.1:
-  version "2.20.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
-
 morgan@~1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.6.1.tgz#5fd818398c6819cba28a7cd6664f292fe1c0bbf2"
@@ -4343,6 +4339,11 @@ react-dom@^16.2.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
+
+react-lifecycles-compat@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.2.tgz#00a23160eec17a43b94dd74f95d44a1a2c3c5ec1"
+  integrity sha512-BPksUj7VMAAFhcCw79sZA0Ow/LTAEjs3Sio1AQcuwLeOP+ua0f/08Su2wyiW+JjDDH6fRqNy3h5CLXh21u1mVg==
 
 react-native@^0.51.0:
   version "0.51.0"
