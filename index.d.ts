@@ -64,7 +64,7 @@ declare module "react-native-calendar-strip-dayjs" {
     end: Date;
   };
 
-  class ReactNativeCalendarStrip extends Component<
+  class ReactNativeCalendarStripDayjs extends Component<
     {
       style: StyleProp<ViewStyle>;
       innerStyle?: StyleProp<ViewStyle>;
@@ -75,7 +75,6 @@ declare module "react-native-calendar-strip-dayjs" {
       onDateSelected?: (date: Date) => void;
       onWeekChanged?: (date: Date) => void;
       updateWeek?: boolean;
-      useIsoWeekday?: boolean;
       minDate?: Date;
       maxDate?: Date;
       datesWhitelist?: TDateRange[];
@@ -131,5 +130,7 @@ declare module "react-native-calendar-strip-dayjs" {
     {}
   > {}
 
-  export = ReactNativeCalendarStrip;
+  export = ReactNativeCalendarStripDayjs;
 }
+
+
