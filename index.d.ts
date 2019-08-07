@@ -1,5 +1,4 @@
 import { Component, ReactNode } from "react";
-import { Duration } from "moment";
 import {
   StyleProp,
   ViewStyle,
@@ -7,7 +6,7 @@ import {
   GestureResponderEvent
 } from "react-native";
 
-declare module "react-native-calendar-strip" {
+declare module "react-native-calendar-strip-dayjs" {
   interface IDaySelectionAnimationBorder {
     type: "border";
     duration: number;
@@ -30,7 +29,7 @@ declare module "react-native-calendar-strip" {
   }
 
   interface IDayComponentProps {
-    date: Duration;
+    date: any;
     marking: any;
     selected: boolean;
     enabled: boolean;
