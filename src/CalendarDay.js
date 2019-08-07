@@ -38,7 +38,8 @@ class CalendarDay extends Component {
     customStyle: PropTypes.object,
 
     daySelectionAnimation: PropTypes.object,
-    allowDayTextScaling: PropTypes.bool
+    allowDayTextScaling: PropTypes.bool,
+    size: PropTypes.number
   };
 
   // Reference: https://medium.com/@Jpoliachik/react-native-s-layoutanimation-is-awesome-4a4d317afd3e
@@ -69,7 +70,7 @@ class CalendarDay extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    newState = {};
+    let newState = {};
     let doStateUpdate = false;
 
     if (this.props.selected !== prevProps.selected) {

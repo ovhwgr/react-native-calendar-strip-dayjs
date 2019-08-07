@@ -1,14 +1,13 @@
-import { Component, ReactNode } from "react";
+import { Component, ReactNode, RefObject } from "react";
 import {
-  StyleProp,
-  ViewStyle,
-  TextStyle,
-  GestureResponderEvent
+    StyleProp,
+    ViewStyle,
+    TextStyle,
+    GestureResponderEvent
 } from "react-native";
 import { Dayjs } from "dayjs";
 
-declare module "react-native-calendar-strip-dayjs" {
-  interface IDaySelectionAnimationBorder {
+interface IDaySelectionAnimationBorder {
     type: "border";
     duration: number;
     borderWidth?: number;
@@ -17,9 +16,9 @@ declare module "react-native-calendar-strip-dayjs" {
     animUpdateType?: any;
     animProperty?: any;
     animSpringDamping?: any;
-  }
+}
 
-  interface IDaySelectionAnimationBackground {
+interface IDaySelectionAnimationBackground {
     type: "background";
     duration: number;
     highlightColor: string;
@@ -27,9 +26,9 @@ declare module "react-native-calendar-strip-dayjs" {
     animUpdateType: any;
     animProperty: any;
     animSpringDamping: any;
-  }
+}
 
-  interface IDayComponentProps {
+interface IDayComponentProps {
     date: any;
     marking: any;
     selected: boolean;
@@ -54,85 +53,85 @@ declare module "react-native-calendar-strip-dayjs" {
     size: number;
     allowDayTextScaling: boolean;
     markedDates: [];
-  }
+}
 
-  type TDaySelectionAnimation =
+type TDaySelectionAnimation =
     | IDaySelectionAnimationBorder
     | IDaySelectionAnimationBackground;
 
-  type TDateRange = {
+type TDateRange = {
     start: Date | Dayjs;
     end: Date | Dayjs;
-  };
+};
 
-  class ReactNativeCalendarStripDayjs extends Component<
-    {
-      style: StyleProp<ViewStyle>;
-      innerStyle?: StyleProp<ViewStyle>;
-      calendarColor?: string;
-      ref: any;
+declare module "react-native-calendar-strip-dayjs" {
+    export class CalendarStrip extends Component<{
+        style: StyleProp<ViewStyle>;
+        innerStyle?: StyleProp<ViewStyle>;
+        calendarColor?: string;
 
-      startingDate?: Date | Dayjs;
-      selectedDate?: Date | Dayjs;
-      onDateSelected?: (date: Date | Dayjs) => void;
-      onWeekChanged?: (date: Date | Dayjs) => void;
-      updateWeek?: boolean;
-      minDate?: Date | Dayjs;
-      maxDate?: Date | Dayjs;
-      datesWhitelist?: TDateRange[];
-      datesBlacklist?: TDateRange[];
+        startingDate?: Date | Dayjs;
+        selectedDate?: Date | Dayjs;
+        onDateSelected?: (date: Date | Dayjs) => void;
+        onWeekChanged?: (date: Date | Dayjs) => void;
+        updateWeek?: boolean;
+        minDate?: Date | Dayjs;
+        maxDate?: Date | Dayjs;
+        datesWhitelist?: TDateRange[];
+        datesBlacklist?: TDateRange[];
 
-      showMonth?: boolean;
-      showDayName?: boolean;
-      showDayNumber?: boolean;
-      showDate?: boolean;
+        showMonth?: boolean;
+        showDayName?: boolean;
+        showDayNumber?: boolean;
+        showDate?: boolean;
 
-      leftSelector?: any;
-      rightSelector?: any;
-      iconLeft?: any;
-      iconRight?: any;
-      iconStyle?: any;
-      iconLeftStyle?: any;
-      iconRightStyle?: any;
-      iconContainer?: any;
+        leftSelector?: any;
+        rightSelector?: any;
+        iconLeft?: any;
+        iconRight?: any;
+        iconStyle?: any;
+        iconLeftStyle?: any;
+        iconRightStyle?: any;
+        iconContainer?: any;
 
-      maxDayComponentSize?: number;
-      minDayComponentSize?: number;
-      responsiveSizingOffset?: number;
+        maxDayComponentSize?: number;
+        minDayComponentSize?: number;
+        responsiveSizingOffset?: number;
 
-      calendarHeaderContainerStyle?: StyleProp<ViewStyle>;
-      calendarHeaderStyle?: StyleProp<TextStyle>;
-      calendarHeaderFormat?: string;
-      calendarHeaderPosition?: "below" | "above";
+        calendarHeaderContainerStyle?: StyleProp<ViewStyle>;
+        calendarHeaderStyle?: StyleProp<TextStyle>;
+        calendarHeaderFormat?: string;
+        calendarHeaderPosition?: "below" | "above";
 
-      calendarAnimation?: {
-        duration: number;
-        type: "sequence" | "parallel";
-      };
-      daySelectionAnimation?: TDaySelectionAnimation;
+        calendarAnimation?: {
+            duration: number;
+            type: "sequence" | "parallel";
+        };
+        daySelectionAnimation?: TDaySelectionAnimation;
 
-      customDatesStyles?: any[];
+        customDatesStyles?: any[];
 
-      dayComponent?: (props: IDayComponentProps) => ReactNode;
+        dayComponent?: (props: IDayComponentProps) => ReactNode;
 
-      dateNameStyle?: StyleProp<TextStyle>;
-      dateNumberStyle?: StyleProp<TextStyle>;
-      weekendDateNameStyle?: StyleProp<TextStyle>;
-      weekendDateNumberStyle?: StyleProp<TextStyle>;
-      highlightDateNameStyle?: StyleProp<TextStyle>;
-      highlightDateNumberStyle?: StyleProp<TextStyle>;
-      disabledDateNameStyle?: StyleProp<TextStyle>;
-      disabledDateNumberStyle?: StyleProp<TextStyle>;
-      disabledDateOpacity?: number;
-      styleWeekend?: boolean;
+        dateNameStyle?: StyleProp<TextStyle>;
+        dateNumberStyle?: StyleProp<TextStyle>;
+        weekendDateNameStyle?: StyleProp<TextStyle>;
+        weekendDateNumberStyle?: StyleProp<TextStyle>;
+        highlightDateNameStyle?: StyleProp<TextStyle>;
+        highlightDateNumberStyle?: StyleProp<TextStyle>;
+        disabledDateNameStyle?: StyleProp<TextStyle>;
+        disabledDateNumberStyle?: StyleProp<TextStyle>;
+        disabledDateOpacity?: number;
+        styleWeekend?: boolean;
 
-      locale?: object;
-      shouldAllowFontScaling?: boolean;
+        locale?: object;
+        shouldAllowFontScaling?: boolean;
+        markedDates: any[];
+        markedDatesStyle: TextStyle;
+        customDatesStyle: any[];
     },
-    {}
-  > {}
-
-  export = ReactNativeCalendarStripDayjs;
+        {}> {
+    }
 }
 
 
