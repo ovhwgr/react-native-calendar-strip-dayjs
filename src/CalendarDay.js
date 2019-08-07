@@ -214,8 +214,8 @@ class CalendarDay extends Component {
       dateNumberStyle = [styles.dateNumber, this.props.dateNumberStyle];
       if (
         this.props.styleWeekend &&
-        (this.props.date.isoWeekday() === 6 ||
-          this.props.date.isoWeekday() === 7)
+        (this.props.date.day() === 0 ||
+          this.props.date.day() === 6)
       ) {
         dateNameStyle = [
           styles.weekendDateName,

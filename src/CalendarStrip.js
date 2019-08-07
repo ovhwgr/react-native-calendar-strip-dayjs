@@ -29,7 +29,6 @@ class CalendarStrip extends Component {
     onDateSelected: PropTypes.func,
     onWeekChanged: PropTypes.func,
     updateWeek: PropTypes.bool,
-    useIsoWeekday: PropTypes.bool,
     minDate: PropTypes.any,
     maxDate: PropTypes.any,
     datesWhitelist: PropTypes.array,
@@ -82,7 +81,6 @@ class CalendarStrip extends Component {
   };
 
   static defaultProps = {
-    useIsoWeekday: true,
     showMonth: true,
     showDate: true,
     updateWeek: true,
