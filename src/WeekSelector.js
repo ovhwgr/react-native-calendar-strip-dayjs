@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Image, TouchableOpacity } from "react-native";
 
 import dayjs from "dayjs";
-import isBetween from 'dayjs/plugin/isBetween'
+import isBetween from "dayjs/plugin/isBetween";
 
 import styles from "./Calendar.style.js";
 
@@ -29,7 +29,8 @@ class WeekSelector extends Component {
     imageSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     onPress: PropTypes.func,
     weekStartDate: PropTypes.object,
-    weekEndDate: PropTypes.object
+    weekEndDate: PropTypes.object,
+    size: PropTypes.number
   };
 
   shouldComponentUpdate(nextProps) {

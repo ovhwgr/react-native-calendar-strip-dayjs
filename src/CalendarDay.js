@@ -4,7 +4,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {polyfill} from 'react-lifecycles-compat';
+import { polyfill } from "react-lifecycles-compat";
 
 import { Text, View, LayoutAnimation, TouchableOpacity } from "react-native";
 import styles from "./Calendar.style.js";
@@ -38,7 +38,8 @@ class CalendarDay extends Component {
     customStyle: PropTypes.object,
 
     daySelectionAnimation: PropTypes.object,
-    allowDayTextScaling: PropTypes.bool
+    allowDayTextScaling: PropTypes.bool,
+    size: PropTypes.number
   };
 
   // Reference: https://medium.com/@Jpoliachik/react-native-s-layoutanimation-is-awesome-4a4d317afd3e
@@ -69,7 +70,7 @@ class CalendarDay extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    newState = {};
+    const newState = {};
     let doStateUpdate = false;
 
     if (this.props.selected !== prevProps.selected) {
@@ -106,7 +107,7 @@ class CalendarDay extends Component {
     }
 
     if (prevProps.size !== this.props.size) {
-      newState = { ...newState, ...this.calcSizes(this.props) };
+      const newState = { ...newState, ...this.calcSizes(this.props) };
       doStateUpdate = true;
     }
 
@@ -134,36 +135,49 @@ class CalendarDay extends Component {
     const markedDatesStyle = this.props.markedDatesStyle || {};
     let validDots = <View style={[styles.dot]} />; // default empty view for no dots case
 
-    if (marking.dots && Array.isArray(marking.dots) && marking.dots.length > 0) {
+    if (
+      marking.dots &&
+      Array.isArray(marking.dots) &&
+      marking.dots.length > 0
+    ) {
       // Filter out dots so that we we process only those items which have key and color property
-      validDots = marking.dots
-        .filter(d => (d && d.color))
-        .map((dot, index) => {
+      validDots = marking.dots.filter(d => d && d.color).map((dot, index) => {
         return (
           <View
             key={dot.key ? dot.key : index}
             style={[
               baseDotStyle,
-              { backgroundColor: marking.selected && dot.selectedDotColor ? dot.selectedDotColor : dot.color },
+              {
+                backgroundColor:
+                  marking.selected && dot.selectedDotColor
+                    ? dot.selectedDotColor
+                    : dot.color
+              },
               markedDatesStyle
             ]}
           />
         );
       });
-      return (
-        <View style={styles.dotsContainer}>
-          {validDots}
-        </View>
-      );
-    };
+      return <View style={styles.dotsContainer}>{validDots}</View>;
+    }
 
-    return null
+    return null;
   }
 
   render() {
     // Defaults for disabled state
-    let dateNameStyle = [styles.dateName, this.props.enabled ? this.props.dateNameStyle : this.props.disabledDateNameStyle];
-    let dateNumberStyle = [styles.dateNumber, this.props.enabled ? this.props.dateNumberStyle : this.props.disabledDateNumberStyle];
+    let dateNameStyle = [
+      styles.dateName,
+      this.props.enabled
+        ? this.props.dateNameStyle
+        : this.props.disabledDateNameStyle
+    ];
+    let dateNumberStyle = [
+      styles.dateNumber,
+      this.props.enabled
+        ? this.props.dateNumberStyle
+        : this.props.disabledDateNumberStyle
+    ];
     let dateViewStyle = this.props.enabled
       ? [{ backgroundColor: "transparent" }]
       : [{ opacity: this.props.disabledDateOpacity }];
@@ -181,7 +195,9 @@ class CalendarDay extends Component {
       //If it is border, the user has to input color for border animation
       switch (this.props.daySelectionAnimation.type) {
         case "background":
-          dateViewStyle.push({ backgroundColor: this.props.daySelectionAnimation.highlightColor });
+          dateViewStyle.push({
+            backgroundColor: this.props.daySelectionAnimation.highlightColor
+          });
           break;
         case "border":
           dateViewStyle.push({
@@ -226,7 +242,6 @@ class CalendarDay extends Component {
       padding: this.state.containerPadding
     };
 
-
     return (
       <TouchableOpacity
         onPress={this.props.onDateSelected.bind(this, this.props.date)}
@@ -251,14 +266,14 @@ class CalendarDay extends Component {
             <View>
               <Text
                 style={[
-                    { fontSize: this.state.dateNumberFontSize },
-                    dateNumberStyle
+                  { fontSize: this.state.dateNumberFontSize },
+                  dateNumberStyle
                 ]}
                 allowFontScaling={this.props.allowDayTextScaling}
               >
                 {this.props.date.date()}
               </Text>
-              { this.renderDots() }
+              {this.renderDots()}
             </View>
           )}
         </View>

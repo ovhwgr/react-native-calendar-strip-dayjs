@@ -66,14 +66,14 @@ export default StyleSheet.create({
 
   // CALENDAR DOTS
   dotsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center'
+    flexDirection: "row",
+    justifyContent: "center"
   },
   visibleDot: {
     opacity: 1,
-    backgroundColor: 'blue'
+    backgroundColor: "blue"
   },
   selectedDot: {
-    backgroundColor: 'blue'
-  },
+    backgroundColor: "blue"
+  }
 });
