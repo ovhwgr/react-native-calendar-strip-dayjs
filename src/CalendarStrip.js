@@ -299,7 +299,6 @@ class CalendarStrip extends Component {
     selectedDate = this.state.selectedDate,
     props = this.props
   ) {
-    const me = this;
     let datesForWeek = [];
     let datesAllowedForWeek = [];
     let datesSelectedForWeek = [];
