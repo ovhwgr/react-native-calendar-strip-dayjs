@@ -238,8 +238,8 @@ class CalendarStrip extends Component {
   }
 
   //Function that checks if the locale is passed to the component and sets it to the passed dayjs instance
-  setLocale(momentInstance) {
-    return momentInstance;
+  setLocale(date) {
+    return date;
   }
 
   getInitialStartingDate() {
