@@ -8,14 +8,11 @@ import {polyfill} from 'react-lifecycles-compat';
 import { View, Animated, Easing } from "react-native";
 
 import dayjs from "dayjs";
-import weekday from 'dayjs/plugin/weekday'
 
 import CalendarHeader from "./CalendarHeader";
 import CalendarDay from "./CalendarDay";
 import WeekSelector from "./WeekSelector";
 import styles from "./Calendar.style.js";
-
-dayjs.extend(weekday);
 
 /*
  * Class CalendarStrip that is representing the whole calendar strip and contains CalendarDay elements
@@ -305,13 +302,7 @@ class CalendarStrip extends Component {
     let datesCustomStylesForWeek = [];
 
     for (let i = 0; i < this.numDaysInWeek; i++) {
-      let date;
-      if (props.useIsoWeekday) {
-        // isoWeekday starts from Monday
-        date = startingDate.weekday(i + 1);
-      } else {
-        date = startingDate.add(i, "day");
-      }
+      const date = startingDate.add(i, "day");
       datesForWeek.push(date);
       datesAllowedForWeek.push(this.isDateAllowed(date, props));
       datesSelectedForWeek.push(this.isDateSelected(date, selectedDate));
