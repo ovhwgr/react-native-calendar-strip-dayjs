@@ -5,17 +5,18 @@ import {
   TextStyle,
   GestureResponderEvent
 } from "react-native";
+import { Dayjs } from "dayjs";
 
 declare module "react-native-calendar-strip-dayjs" {
   interface IDaySelectionAnimationBorder {
     type: "border";
     duration: number;
-    borderWidth: number;
-    borderHighlightColor: string;
-    animType: any;
-    animUpdateType: any;
-    animProperty: any;
-    animSpringDamping: any;
+    borderWidth?: number;
+    borderHighlightColor?: string;
+    animType?: any;
+    animUpdateType?: any;
+    animProperty?: any;
+    animSpringDamping?: any;
   }
 
   interface IDaySelectionAnimationBackground {
@@ -60,8 +61,8 @@ declare module "react-native-calendar-strip-dayjs" {
     | IDaySelectionAnimationBackground;
 
   type TDateRange = {
-    start: Date;
-    end: Date;
+    start: Date | Dayjs;
+    end: Date | Dayjs;
   };
 
   class ReactNativeCalendarStripDayjs extends Component<
@@ -69,14 +70,15 @@ declare module "react-native-calendar-strip-dayjs" {
       style: StyleProp<ViewStyle>;
       innerStyle?: StyleProp<ViewStyle>;
       calendarColor?: string;
+      ref: any;
 
-      startingDate?: Date;
-      selectedDate?: Date;
-      onDateSelected?: (date: Date) => void;
-      onWeekChanged?: (date: Date) => void;
+      startingDate?: Date | Dayjs;
+      selectedDate?: Date | Dayjs;
+      onDateSelected?: (date: Date | Dayjs) => void;
+      onWeekChanged?: (date: Date | Dayjs) => void;
       updateWeek?: boolean;
-      minDate?: Date;
-      maxDate?: Date;
+      minDate?: Date | Dayjs;
+      maxDate?: Date | Dayjs;
       datesWhitelist?: TDateRange[];
       datesBlacklist?: TDateRange[];
 
