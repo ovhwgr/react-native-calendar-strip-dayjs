@@ -26,7 +26,7 @@ class WeekSelector extends Component {
       PropTypes.number,
       PropTypes.array
     ]),
-    imageSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    imageSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.node]),
     onPress: PropTypes.func,
     weekStartDate: PropTypes.object,
     weekEndDate: PropTypes.object,
