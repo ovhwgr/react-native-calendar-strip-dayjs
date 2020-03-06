@@ -126,42 +126,54 @@ class CalendarDay extends Component {
     };
   }
 
+  createDots(dots) {
+    const baseDotStyle = [styles.dot, styles.visibleDot];
+    const markedDatesStyle = this.props.markedDatesStyle || {};
+    const marking = this.props.marking || {};
+
+    return dots.map((dot, index) => {
+      return (
+        <View
+          key={dot.key ? dot.key : index}
+          style={[
+            baseDotStyle,
+            {
+              backgroundColor:
+                marking.selected && dot.selectedDotColor
+                  ? dot.selectedDotColor
+                  : dot.color
+            },
+            markedDatesStyle
+          ]}
+        />
+      );
+    });
+  }
+
   renderDots() {
     if (!this.props.markedDates || this.props.markedDates.length === 0) {
       return;
     }
     const marking = this.props.marking || {};
-    const baseDotStyle = [styles.dot, styles.visibleDot];
-    const markedDatesStyle = this.props.markedDatesStyle || {};
-    let validDots = <View style={[styles.dot]} />; // default empty view for no dots case
+    const topDots = marking.dots && marking.dots.filter(d => d.color && d.top);
+    const bottomDots = marking.dots && marking.dots.filter(d => d.color && !d.top);
+    let validTopDots = <View />; // default empty view for no dots case
+    let validBottomDots = <View />; // default empty view for no dots case
 
-    if (
-      marking.dots &&
-      Array.isArray(marking.dots) &&
-      marking.dots.length > 0
-    ) {
-      // Filter out dots so that we we process only those items which have key and color property
-      validDots = marking.dots.filter(d => d && d.color).map((dot, index) => {
-        return (
-          <View
-            key={dot.key ? dot.key : index}
-            style={[
-              baseDotStyle,
-              {
-                backgroundColor:
-                  marking.selected && dot.selectedDotColor
-                    ? dot.selectedDotColor
-                    : dot.color
-              },
-              markedDatesStyle
-            ]}
-          />
-        );
-      });
-      return <View style={styles.dotsContainer}>{validDots}</View>;
+    if (topDots && topDots.length) {
+      validTopDots = this.createDots(topDots);
     }
 
-    return null;
+    if (bottomDots && bottomDots.length) {
+      validBottomDots = this.createDots(bottomDots);
+    }
+
+    return (
+      <>
+        <View style={[styles.dotsContainer, styles.topDotsContainer]}>{validTopDots}</View>
+        <View style={styles.dotsContainer}>{validBottomDots}</View>
+      </>
+    );
   }
 
   render() {

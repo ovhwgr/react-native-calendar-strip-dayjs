@@ -1,7 +1,7 @@
 {
   "name": "react-native-calendar-strip-dayjs",
   "description": "Easy to use and visually stunning calendar component for React Native",
-  "author": "Marcin Krysiak <marcin.krysiak@gmail.com>",
+  "author": "OV",
   "license": "MIT",
   "homepage": "https://github.com/BugiDev/react-native-calendar-strip#readme",
   "repository": {
@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/marcinkrysiak1979/react-native-calendar-strip-dayjs/issues"
   },
-  "version": "1.3.8-3",
+  "version": "1.3.9",
   "main": "index.js",
   "directories": {
     "example": "example"
