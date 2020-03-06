@@ -69,6 +69,9 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center"
   },
+  topDotsContainer: {
+    marginBottom: 3
+  },
   visibleDot: {
     opacity: 1,
     backgroundColor: "blue"
